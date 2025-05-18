@@ -24,8 +24,8 @@
         UI_TEXT_COLOR: 'rgba(128, 128, 128, 0.4)',
         UI_BORDER_COLOR: 'rgba(80, 120, 220, 0.0)',
         FONT_FAMILY: '"Segoe UI", Roboto, Arial, sans-serif',
-        CLICKER_BUTTON_COLOR: 'rgba(0, 0, 0, 0.1)', // Оранжевый для "плюса"
-        DECREMENT_BUTTON_COLOR: 'rgba(10, 0, 0, 0.1)', // Красный для "минуса"
+        CLICKER_BUTTON_COLOR: 'rgba(0, 0, 0, 0.2)', // Оранжевый для "плюса"
+        DECREMENT_BUTTON_COLOR: 'rgba(10, 0, 0, 0.13)', // Красный для "минуса"
         MAIN_ACCENT_COLOR: 'rgba(255, 160, 0, 0.1)',      // Акцентный цвет (оранжевый)
 
         // --- Кнопка Свернуть/Развернуть ---
@@ -44,8 +44,8 @@
         CLOCK_DISPLAY_ID: 'prodRealTimeClock_v2',
 
         // --- Настройки Смены ---
-        DEFAULT_DAY_SHIFT_START_TIME: '07:15',
-        DEFAULT_NIGHT_SHIFT_START_TIME: '19:15', // Для ночных смен, если авто-определение
+        DEFAULT_DAY_SHIFT_START_TIME: '06:29',
+        DEFAULT_NIGHT_SHIFT_START_TIME: '18:29', // Для ночных смен, если авто-определение
         SETTINGS_SHIFT_TYPE_SELECT_ID: 'shiftTypeSelect_v2',
         SETTINGS_SHIFT_START_TIME_INPUT_ID: 'shiftStartTimeInput_v2',
 
@@ -266,7 +266,7 @@
                 boxSizing: 'border-box', color: CONFIG.UI_TEXT_COLOR, fontFamily: CONFIG.FONT_FAMILY,
                 zIndex: '999999998', // Чуть ниже экстренной кнопки "показать"
                 display: 'flex', flexDirection: 'column', padding: '10px 15px', // Увеличил padding
-                overflow: 'hidden', boxShadow: '0 5px 30px rgba(0,0,0,0.5)', // Усилил тень
+                overflow: 'hidden', boxShadow: '0 0px 00px rgba(0,0,0,0.0)', // Усилил тень
                 transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
             }
         });
@@ -276,7 +276,7 @@
         const topControlsStyle = { display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '8px', flexShrink: 0 };
         const topControls = createDOMElement('div', { style: topControlsStyle });
         const commonButtonStyle = {
-            cursor: 'pointer', background: 'rgba(255,255,255,0.05)', border: `1px solid ${CONFIG.UI_BORDER_COLOR}`,
+            cursor: 'pointer', background: 'rgba(255,255,255,0.05)', border: `0px solid ${CONFIG.UI_BORDER_COLOR}`,
             color: CONFIG.UI_TEXT_COLOR, borderRadius: '6px', padding: '5px 10px', fontSize: '0.85em',
             marginLeft: '8px', transition: 'background-color 0.2s, border-color 0.2s, color 0.2s'
         };
@@ -323,7 +323,7 @@
             style: {
                 fontSize: '3.8em', fontWeight: 'bold', color: CONFIG.MAIN_ACCENT_COLOR, marginBottom: '10px',
                 textAlign: 'center', background: 'none', border: 'none', borderBottom: `2px solid ${CONFIG.MAIN_ACCENT_COLOR}55`,
-                width: '180px', padding: '5px 0', outline: 'none',
+                width: '120px', padding: '5px 0', outline: 'none',
             }
         });
         state.domElements.mainCounterInput.addEventListener('change', handleCounterInputChange);
@@ -345,7 +345,7 @@
         makeButtonInteractive(state.domElements.decrementButton);
 
         state.domElements.incrementButton = createDOMElement('button', {
-            id: CONFIG.CLICKER_INCREMENT_BUTTON_ID, textContent: '✚', title: `Зарегистрировать (+1) или ${CONFIG.INCREMENT_KEYBOARD_SHORTCUT}`,
+            id: CONFIG.CLICKER_INCREMENT_BUTTON_ID, textContent: '✚', title: `reg +1 or ${CONFIG.INCREMENT_KEYBOARD_SHORTCUT}`,
             style: {
                 padding: '15px 25px', fontSize: '2.5em', fontWeight: 'bold', cursor: 'pointer',
                 backgroundColor: CONFIG.CLICKER_BUTTON_COLOR, color: 'white', border: 'none', borderRadius: '10px',
@@ -450,7 +450,7 @@
     function buildEmergencyShowButton() {
         // (Как в прошлой версии, но с измененным текстом и стилями из CONFIG)
          state.domElements.emergencyShowButton = createDOMElement('button', {
-            id: 'emergencyShowBtn_v2', textContent: CONFIG.EMERGENCY_SHOW_BUTTON_TEXT, title: 'Развернуть интерфейс',
+            id: 'emergencyShowBtn_v2', textContent: CONFIG.EMERGENCY_SHOW_BUTTON_TEXT, title: 'Show UI',
             style: {
                 position: 'fixed', bottom: CONFIG.UI_BOTTOM_OFFSET, right: CONFIG.UI_RIGHT_OFFSET,
                 width: CONFIG.EMERGENCY_SHOW_BUTTON_SIZE, height: CONFIG.EMERGENCY_SHOW_BUTTON_SIZE,
@@ -515,7 +515,7 @@
 
         // Обед
         const lunchGroup = createDOMElement('div');
-        lunchGroup.appendChild(createDOMElement('label', { for: CONFIG.SETTINGS_LUNCH_TIME_SELECT_ID, textContent: 'Обеденный перерыв:', style: commonLabelStyle }));
+        lunchGroup.appendChild(createDOMElement('label', { for: CONFIG.SETTINGS_LUNCH_TIME_SELECT_ID, textContent: 'Lunch break:', style: commonLabelStyle }));
         state.domElements.settingsLunchSelect = createDOMElement('select', { id: CONFIG.SETTINGS_LUNCH_TIME_SELECT_ID, style: commonSelectStyle });
         state.domElements.settingsLunchSelect.addEventListener('change', handleLunchSettingChange);
         lunchGroup.appendChild(state.domElements.settingsLunchSelect);
@@ -559,7 +559,7 @@
         const shiftSelect = state.domElements.settingsShiftTypeSelect;
         if(shiftSelect) {
             shiftSelect.innerHTML = ''; // Очистить, если были старые опции
-            [['auto', 'Автоматически'], ['day', `Дневная (с ${CONFIG.DEFAULT_DAY_SHIFT_START_TIME})`], ['night', `Ночная (с ${CONFIG.DEFAULT_NIGHT_SHIFT_START_TIME})`]].forEach(([val, txt]) => {
+            [['auto', 'Auto'], ['day', `Day (from ${CONFIG.DEFAULT_DAY_SHIFT_START_TIME})`], ['night', `Night (from ${CONFIG.DEFAULT_NIGHT_SHIFT_START_TIME})`]].forEach(([val, txt]) => {
                 shiftSelect.add(new Option(txt, val));
             });
             shiftSelect.value = state.shiftType;
@@ -799,11 +799,13 @@
     }
 
     function updateNotesHistoryDisplay() {
+        //remove with return
+        return;
         const display = state.domElements.notesHistoryDisplay;
         if (!display) return;
         display.innerHTML = ''; // Очищаем
         if (state.notesHistory.length === 0) {
-            display.appendChild(createDOMElement('p', {textContent: 'История заметок пуста.', style: {opacity: '0.5', textAlign: 'center', margin: '10px 0'}}));
+            display.appendChild(createDOMElement('p', {textContent: 'history is empty', style: {opacity: '0.5', textAlign: 'center', margin: '10px 0'}}));
             return;
         }
         state.notesHistory.forEach(note => {
@@ -902,7 +904,7 @@
         if (!state.shiftStartTime || !(state.shiftStartTime instanceof Date) || isNaN(state.shiftStartTime.getTime())) {
             determineAndSetShiftStartTime(true); // Убедимся, что время смены есть
              if (!state.shiftStartTime) {
-                if (state.domElements.statsTextSummary) state.domElements.statsTextSummary.innerHTML = '<p style="color:red;">Ошибка: Не удалось определить время начала смены!</p>';
+                if (state.domElements.statsTextSummary) state.domElements.statsTextSummary.innerHTML = '<p style="color:red;">Error: not auto shift</p>';
                 return;
              }
         }
@@ -913,8 +915,8 @@
         if (totalElapsedMs < 0) { // Начало смены в будущем
             if (state.domElements.statsTextSummary) {
                 state.domElements.statsTextSummary.innerHTML = `
-                    <p>Смена начнется в: ${formatDateToHHMM(state.shiftStartTime)}</p>
-                    <p>Ожидание...</p>
+                    <p>Shift starts in: ${formatDateToHHMM(state.shiftStartTime)}</p>
+                    <p>Waiting...</p>
                 `;
             }
             drawShiftProgressGraph(); // Отрисовать пустой график
