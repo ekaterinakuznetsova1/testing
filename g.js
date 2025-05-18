@@ -17,19 +17,19 @@
         UI_CONTAINER_ID: 'productionHelperUI_v2',
         UI_BOTTOM_OFFSET: '10px',
         UI_RIGHT_OFFSET: '10px',
-        UI_WIDTH_PERCENT_VIEWPORT: 75,      // Ширина основного UI в % от ширины окна (было 70)
-        UI_HEIGHT_PERCENT_VIEWPORT: 22,     // Высота UI в % (было 18, увеличил для новых эл-тов)
+        UI_WIDTH_PERCENT_VIEWPORT: 85,      // Ширина основного UI в % от ширины окна (было 70)
+        UI_HEIGHT_PERCENT_VIEWPORT: 35,     // Высота UI в % (было 18, увеличил для новых эл-тов)
         UI_MIN_HEIGHT_PX: 180,              // Минимальная высота UI (было 120)
-        UI_BACKGROUND_COLOR: 'rgba(30, 35, 45, 0.8)', // Темно-сине-серый, чуть прозрачнее
-        UI_TEXT_COLOR: 'rgba(230, 230, 240, 0.9)',
-        UI_BORDER_COLOR: 'rgba(80, 120, 220, 0.8)',
+        UI_BACKGROUND_COLOR: 'rgba(30, 35, 45, 0.0)', // Темно-сине-серый, чуть прозрачнее
+        UI_TEXT_COLOR: 'rgba(128, 128, 128, 0.4)',
+        UI_BORDER_COLOR: 'rgba(80, 120, 220, 0.0)',
         FONT_FAMILY: '"Segoe UI", Roboto, Arial, sans-serif',
-        CLICKER_BUTTON_COLOR: 'rgba(255, 100, 0, 0.85)', // Оранжевый для "плюса"
-        DECREMENT_BUTTON_COLOR: 'rgba(200, 60, 60, 0.8)', // Красный для "минуса"
-        MAIN_ACCENT_COLOR: 'rgba(255, 160, 0, 0.9)',      // Акцентный цвет (оранжевый)
+        CLICKER_BUTTON_COLOR: 'rgba(0, 0, 0, 0.1)', // Оранжевый для "плюса"
+        DECREMENT_BUTTON_COLOR: 'rgba(10, 0, 0, 0.1)', // Красный для "минуса"
+        MAIN_ACCENT_COLOR: 'rgba(255, 160, 0, 0.1)',      // Акцентный цвет (оранжевый)
 
         // --- Кнопка Свернуть/Развернуть ---
-        EMERGENCY_HIDE_BUTTON_TEXT: 'СКРЫТЬ ЭТУ ПАНЕЛЬ!', // Как на картинке
+        EMERGENCY_HIDE_BUTTON_TEXT: 'CLOSE', // Как на картинке
         EMERGENCY_SHOW_BUTTON_TEXT: '🛠️',
         EMERGENCY_SHOW_BUTTON_SIZE: '30px',
         EMERGENCY_SHOW_BUTTON_OPACITY: 0.3,
@@ -52,32 +52,34 @@
         // --- Настройки Обеда ---
         SETTINGS_LUNCH_TIME_SELECT_ID: 'lunchTimeSelect_v2',
         DEFAULT_LUNCH_OPTIONS: [ // Обед всегда есть, первый в списке будет по умолчанию
-            { text: "Обед 1 (10:30-11:00)", start: "10:30", end: "11:00" },
-            { text: "Обед 2 (11:00-11:30)", start: "11:00", end: "11:30" },
-            { text: "Обед 3 (11:30-12:00)", start: "11:30", end: "12:00" },
-            { text: "Обед 4 (12:00-12:30)", start: "12:00", end: "12:30" },
-            { text: "Обед Ночь (22:30-23:00)", start: "22:30", end: "23:00" },
-            { text: "Другой (указать в коде)" , start: "00:00", end: "00:00"}, // можно переопределить
+            { text: "Обед 1 День", start: "11:20", end: "11:50" },
+            { text: "Обед 2 День", start: "11:50", end: "12:20" },
+            { text: "Обед 3 День", start: "12:20", end: "12:50" },
+            { text: "Обед 4 День", start: "12:50", end: "13:20" },
+            { text: "Обед 1 Ночь", start: "23:20", end: "23:50" },
+            { text: "Обед 2 Ночь", start: "23:50", end: "00:20" },
+            { text: "Обед 3 Ночь", start: "00:20", end: "00:50" },
+            { text: "Обед 4 Ночь", start: "00:50", end: "01:20" }, // можно переопределить
         ],
         DEFAULT_LUNCH_INDEX: 0, // Индекс обеда по умолчанию из списка выше
 
         // --- Отображение Статистики ---
         STATS_TEXT_SUMMARY_ID: 'prodStatsSummary_v2',    // Общий блок для текстовой статистики
-        STATS_UPDATE_INTERVAL_MS: 5000,      // Обновление статистики и графика
+        STATS_UPDATE_INTERVAL_MS: 3000,      // Обновление статистики и графика
 
         // --- График Прогресса за Смену ---
         SHIFT_PROGRESS_GRAPH_ID: 'shiftProgressGraph_v2',
         SHIFT_PROGRESS_GRAPH_HEIGHT_PX: 80, // Увеличил высоту для лучшей читаемости
-        GRAPH_LINE_COLOR: 'rgba(255, 165, 0, 0.9)',       // Цвет линии фактических данных
+        GRAPH_LINE_COLOR: 'rgba(255, 165, 0, 0.4)',       // Цвет линии фактических данных
         GRAPH_TARGET_RATE_LINES: [                        // Целевые линии производительности (предметов/час)
-            { rate: 10, color: 'rgba(100, 100, 255, 0.5)', label: '10/ч' },
-            { rate: 20, color: 'rgba(100, 200, 100, 0.5)', label: '20/ч' },
-            { rate: 30, color: 'rgba(255, 100, 100, 0.5)', label: '30/ч' }
+            { rate: 10, color: 'rgba(100, 100, 255, 0.1)', label: '10/h' },
+            { rate: 20, color: 'rgba(100, 200, 100, 0.1)', label: '20/h' },
+            { rate: 30, color: 'rgba(255, 100, 100, 0.1)', label: '30/h' }
         ],
         GRAPH_X_AXIS_TIME_MARKERS_COUNT: 6, // Примерное кол-во временных меток на оси X
 
         // --- Авто-Кликер по Триггеру ---
-        AUTO_CLICK_TRIGGER_WORD: 'MOgoskury',             // Ключевое слово (чувствительно к регистру)
+        AUTO_CLICK_TRIGGER_WORD: 'admin333',             // Ключевое слово (чувствительно к регистру)
         TRIGGER_OBSERVE_AREA_SELECTOR: 'body',            // Селектор элемента, где искать триггерное слово. 'body' - вся страница.
                                                           // Можно сузить до конкретного контейнера: 'div#operationResultDisplay'
         AUTO_CLICK_ENABLED_CHECKBOX_ID: 'autoClickEnabled_v2',
@@ -85,18 +87,18 @@
         // --- Поле для Заметок с Историей ---
         NOTES_INPUT_ID: 'prodNotesInput_v2',
         NOTES_HISTORY_DISPLAY_ID: 'prodNotesHistory_v2',
-        MAX_NOTES_HISTORY_ITEMS: 15,
+        MAX_NOTES_HISTORY_ITEMS: 115,
 
         // --- Хранилище Настроек ---
         STORAGE_KEY_PREFIX: 'prodHelper_data_v2.1_',
         USE_SESSION_STORAGE: true, // true = sessionStorage (очистка при закрытии браузера), false = localStorage
 
         // --- UI Блокировка и Панель Настроек ---
-        LOCK_UI_BUTTON_TEXT_UNLOCKED: '🔓 Блок. UI',
-        LOCK_UI_BUTTON_TEXT_LOCKED: '🔒 Разблок.',
+        LOCK_UI_BUTTON_TEXT_UNLOCKED: 'UI block',
+        LOCK_UI_BUTTON_TEXT_LOCKED: 'UI unblock',
         SETTINGS_PANEL_ID: 'prodHelperSettingsPanel_v2',
-        TOGGLE_SETTINGS_BUTTON_TEXT_CLOSED: 'НАСТРОЙКИ ⚙️', // Как на картинке
-        TOGGLE_SETTINGS_BUTTON_TEXT_OPENED: 'НАСТРОЙКИ ◀',
+        TOGGLE_SETTINGS_BUTTON_TEXT_CLOSED: 'settings', // Как на картинке
+        TOGGLE_SETTINGS_BUTTON_TEXT_OPENED: 'settings',
 
         DEBUG_MODE: true, // Включить/выключить доп. логи в консоль
     };
@@ -282,19 +284,19 @@
 
         state.domElements.toggleSettingsButton = createDOMElement('button', {
             id: CONFIG.TOGGLE_SETTINGS_BUTTON_ID, textContent: CONFIG.TOGGLE_SETTINGS_BUTTON_TEXT_CLOSED,
-            title: 'Открыть/Закрыть панель настроек', style: commonButtonStyle
+            title: 'open/close settings', style: commonButtonStyle
         });
         state.domElements.toggleSettingsButton.addEventListener('click', toggleSettingsPanelVisibility);
 
         state.domElements.lockUIButton = createDOMElement('button', {
             id: 'lockProdUIBtn_v2', textContent: CONFIG.LOCK_UI_BUTTON_TEXT_UNLOCKED,
-            title: 'Заблокировать/Разблокировать UI (кроме кликера)', style: commonButtonStyle
+            title: 'block/unblock UI', style: commonButtonStyle
         });
         state.domElements.lockUIButton.addEventListener('click', toggleUILockState);
 
         state.domElements.emergencyHideButton = createDOMElement('button', {
             id: 'hideProdUIBtn_v2', textContent: CONFIG.EMERGENCY_HIDE_BUTTON_TEXT,
-            title: 'Свернуть интерфейс', style: { ...commonButtonStyle, backgroundColor: 'rgba(200, 80, 80, 0.4)' }
+            title: 'hide UI', style: { ...commonButtonStyle, backgroundColor: 'rgba(200, 80, 80, 0.4)' }
         });
         state.domElements.emergencyHideButton.addEventListener('click', () => setUIVisibility(false));
 
@@ -332,7 +334,7 @@
 
         const clickerButtonsContainer = createDOMElement('div', { style: { display: 'flex', alignItems: 'center' } });
         state.domElements.decrementButton = createDOMElement('button', {
-            id: CONFIG.CLICKER_DECREMENT_BUTTON_ID, textContent: '➖', title: 'Уменьшить счетчик (-1)',
+            id: CONFIG.CLICKER_DECREMENT_BUTTON_ID, textContent: '➖', title: '-1',
             style: {
                 padding: '10px 15px', fontSize: '1.5em', cursor: 'pointer', marginRight: '10px',
                 backgroundColor: CONFIG.DECREMENT_BUTTON_COLOR, color: 'white', border: 'none', borderRadius: '8px',
@@ -347,7 +349,7 @@
             style: {
                 padding: '15px 25px', fontSize: '2.5em', fontWeight: 'bold', cursor: 'pointer',
                 backgroundColor: CONFIG.CLICKER_BUTTON_COLOR, color: 'white', border: 'none', borderRadius: '10px',
-                boxShadow: '0 3px 7px rgba(0,0,0,0.25)', transition: 'transform 0.1s'
+                boxShadow: '0 3px 7px rgba(0,0,0,0.1)', transition: 'transform 0.1s'
             }
         });
         state.domElements.incrementButton.addEventListener('click', () => processIncrement(true)); // true - ручной клик
@@ -359,9 +361,9 @@
 
         // Зона Заметок (снизу в левой колонке)
         const notesArea = createDOMElement('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1 } });
-        notesArea.appendChild(createDOMElement('label', { for: CONFIG.NOTES_INPUT_ID, textContent: 'Быстрые заметки (Enter для сохранения):', style: { marginBottom: '5px', fontSize: '0.8em' } }));
+        notesArea.appendChild(createDOMElement('label', { for: CONFIG.NOTES_INPUT_ID, textContent: 'Notes:', style: { marginBottom: '5px', fontSize: '0.8em' } }));
         state.domElements.notesInput = createDOMElement('input', {
-            type: 'text', id: CONFIG.NOTES_INPUT_ID, placeholder: 'Введите заметку...',
+            type: 'text', id: CONFIG.NOTES_INPUT_ID, placeholder: 'Enter note...',
             style: {
                 width: '100%', padding: '8px', boxSizing: 'border-box', marginBottom: '8px',
                 background: 'rgba(0,0,0,0.2)', border: `1px solid ${CONFIG.UI_BORDER_COLOR}88`,
@@ -452,12 +454,12 @@
             style: {
                 position: 'fixed', bottom: CONFIG.UI_BOTTOM_OFFSET, right: CONFIG.UI_RIGHT_OFFSET,
                 width: CONFIG.EMERGENCY_SHOW_BUTTON_SIZE, height: CONFIG.EMERGENCY_SHOW_BUTTON_SIZE,
-                backgroundColor: 'rgba(50,60,80,0.6)', border: `1px solid ${CONFIG.UI_BORDER_COLOR}`,
+                backgroundColor: 'rgba(50,60,80,0.1)', border: `1px solid ${CONFIG.UI_BORDER_COLOR}`,
                 color: CONFIG.UI_TEXT_COLOR, borderRadius: '50%', cursor: 'pointer', display: 'none',
                 alignItems: 'center', justifyContent: 'center', zIndex: '999999999',
                 opacity: String(CONFIG.EMERGENCY_SHOW_BUTTON_OPACITY),
                 transition: 'opacity 0.2s ease, transform 0.2s ease, background-color 0.2s', fontSize: '16px',
-                boxShadow: '0 0 15px rgba(0,0,0,0.3)'
+                boxShadow: '0 0 15px rgba(0,0,0,0.1)'
             }
         });
         state.domElements.emergencyShowButton.onmouseover = () => {
@@ -468,7 +470,7 @@
         state.domElements.emergencyShowButton.onmouseout = () => {
             state.domElements.emergencyShowButton.style.opacity = String(CONFIG.EMERGENCY_SHOW_BUTTON_OPACITY);
             state.domElements.emergencyShowButton.style.transform = 'scale(1)';
-            state.domElements.emergencyShowButton.style.backgroundColor = 'rgba(50,60,80,0.6)';
+            state.domElements.emergencyShowButton.style.backgroundColor = 'rgba(50,60,80,0.1)';
         };
         state.domElements.emergencyShowButton.onclick = () => setUIVisibility(true);
         document.body.appendChild(state.domElements.emergencyShowButton);
@@ -483,7 +485,7 @@
                 backgroundColor: CONFIG.UI_BACKGROUND_COLOR,
                 borderLeft: `2px solid ${CONFIG.UI_BORDER_COLOR}`,
                 padding: '15px', zIndex: '100', display: 'none', flexDirection: 'column',
-                gap: '15px', overflowY: 'auto', boxShadow: '-8px 0px 20px rgba(0,0,0,0.3)',
+                gap: '15px', overflowY: 'auto', boxShadow: '-8px 0px 20px rgba(0,0,0,0.1)',
                 transition: 'transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1)'
             }
         });
@@ -615,8 +617,8 @@
         state.uiLocked = locked;
 
         state.domElements.lockUIButton.textContent = state.uiLocked ? CONFIG.LOCK_UI_BUTTON_TEXT_LOCKED : CONFIG.LOCK_UI_BUTTON_TEXT_UNLOCKED;
-        state.domElements.lockUIButton.title = state.uiLocked ? 'Разблокировать интерфейс' : 'Заблокировать (кроме кликера и PageDown)';
-        state.domElements.lockUIButton.style.backgroundColor = state.uiLocked ? 'rgba(200, 80, 80, 0.5)' : 'rgba(255,255,255,0.05)';
+        state.domElements.lockUIButton.title = state.uiLocked ? 'Unlocjk UI' : 'Lock UI (Page down)';
+        state.domElements.lockUIButton.style.backgroundColor = state.uiLocked ? 'rgba(200, 80, 80, 0.1)' : 'rgba(255,255,255,0.05)';
 
         const elementsToToggle = [
             state.domElements.toggleSettingsButton, state.domElements.emergencyHideButton,
@@ -648,7 +650,7 @@
             state.domElements.settingsPanel.style.transform = visible ? 'translateX(0%)' : 'translateX(105%)';
         }
          state.domElements.toggleSettingsButton.textContent = visible ? CONFIG.TOGGLE_SETTINGS_BUTTON_TEXT_OPENED : CONFIG.TOGGLE_SETTINGS_BUTTON_TEXT_CLOSED;
-        state.domElements.toggleSettingsButton.style.backgroundColor = visible ? 'rgba(100,120,160,0.6)' : 'rgba(255,255,255,0.05)';
+        state.domElements.toggleSettingsButton.style.backgroundColor = visible ? 'rgba(100,120,160,0.1)' : 'rgba(255,255,255,0.05)';
 
         if (visible && state.uiLocked) { setUILockState(true); } // Переприменить блокировку
         saveDataToStorage();
@@ -956,10 +958,10 @@
 
         if (state.domElements.statsTextSummary) {
             state.domElements.statsTextSummary.innerHTML = `
-                <p>Смена с: <strong>${formatDateToHHMM(state.shiftStartTime)}</strong> (${state.shiftType === 'auto' ? 'Авто' : (state.shiftType === 'day' ? 'День' : 'Ночь')})</p>
-                <p>Выполнено: <strong>${state.totalClicks}</strong> (за ${formatMsToDuration(effectiveWorkMs)})</p>
-                <p>Это примерно: <strong style="color: ${CONFIG.MAIN_ACCENT_COLOR}; font-size: 1.1em;">${clicksPerHour.toFixed(1)}</strong> в час</p>
-                <p>Обед: ${lunchTimes.text}</p>
+                <p>Shift: <strong>${formatDateToHHMM(state.shiftStartTime)}</strong> (${state.shiftType === 'auto' ? 'Auto' : (state.shiftType === 'day' ? 'Day' : 'Night')})</p>
+                <p>Complited: <strong>${state.totalClicks}</strong> (за ${formatMsToDuration(effectiveWorkMs)})</p>
+                <p> ~: <strong style="color: ${CONFIG.MAIN_ACCENT_COLOR}; font-size: 1.1em;">${clicksPerHour.toFixed(1)}</strong> in hour</p>
+                <p>Lunch: ${lunchTimes.text}</p>
             `;
         }
         drawShiftProgressGraph(); // Обновляем график
@@ -1007,7 +1009,7 @@
             ctx.lineTo(x, padding.top + graphHeight);
             ctx.stroke();
             const timeMs = ratio * totalShiftDurationMs;
-            const timeLabel = formatMsToDuration(timeMs).replace('00ч ',''); // Убираем "00ч" если меньше часа
+            const timeLabel = formatMsToDuration(timeMs).replace('00h ',''); // Убираем "00ч" если меньше часа
             ctx.fillText(timeLabel, x, padding.top + graphHeight + 5);
         }
          ctx.fillText('Сейчас', padding.left + graphWidth, padding.top + graphHeight + 15); // Подпись "Сейчас"
