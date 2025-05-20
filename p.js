@@ -251,6 +251,67 @@
         } catch (e) { logError('Failed to save data:', e); }
     }
 
+    function updateOtherTabsSettingsDisplay() {
+        const container = state.domElements.otherTabsSettingsContainer;
+        if (!container) {
+            logDebug("Cannot update other tabs settings display: container not found in DOM elements.");
+            return;
+        }
+        container.innerHTML = ''; // Clear previous checkboxes or messages
+
+        const checkboxLabelStyle = { display: 'flex', alignItems: 'center', cursor: 'pointer', fontSize: '0.85em', color: 'rgba(255,255,255,0.75)', margin:'4px 0'};
+        const checkboxStyle = { marginRight: '8px', transform: 'scale(1.15)', accentColor: CONFIG.MAIN_ACCENT_COLOR};
+
+        const otherTabs = Object.values(state.otherTabsData).filter(td => td.tabId !== state.currentTabId);
+
+        if (otherTabs.length === 0) {
+            container.appendChild(createDOMElement('p', {
+                textContent: '(No other active helper tabs detected)',
+                style: { opacity: '0.6', fontStyle: 'italic', fontSize: '0.85em' }
+            }));
+            return;
+        }
+
+        otherTabs.forEach(tabData => {
+            const checkboxId = `contribToggle_${tabData.tabId.replace(/[^a-zA-Z0-9]/g, '_')}`; // Sanitize ID
+            const label = createDOMElement('label', { for: checkboxId, style: checkboxLabelStyle });
+            const checkbox = createDOMElement('input', {
+                type: 'checkbox',
+                id: checkboxId,
+                checked: tabData.contributesToTotal || false, // Default to false if undefined
+                style: checkboxStyle,
+                dataset: { tabIdTarget: tabData.tabId } // Store target tabId on the element
+            });
+
+            checkbox.addEventListener('change', (e) => {
+                const targetTabId = e.target.dataset.tabIdTarget;
+                constisChecked = e.target.checked;
+                const otherTabStorageKey = CONFIG.MULTI_TAB_STORAGE_PREFIX + targetTabId;
+                try {
+                    const otherTabStoredJson = localStorage.getItem(otherTabStorageKey);
+                    if (otherTabStoredJson) {
+                        const otherTabStoredData = JSON.parse(otherTabStoredJson);
+                        otherTabStoredData.contributesToTotal = isChecked;
+                        otherTabStoredData.timestamp = Date.now(); // Update timestamp
+                        localStorage.setItem(otherTabStorageKey, JSON.stringify(otherTabStoredData));
+                        logInfo(`Contribution for tab ${targetTabId} set to ${isChecked} via settings.`);
+                        // Optimistically update local state for otherTabsData
+                        if(state.otherTabsData[targetTabId]) {
+                           state.otherTabsData[targetTabId].contributesToTotal = isChecked;
+                        }
+                        readAllTabsDataFromLocalStorage(false); // Re-read and recalculate global stats
+                    } else {
+                        logError(`Could not find localStorage data for tabId ${targetTabId} to update contribution.`);
+                    }
+                } catch (err) { logError('Error updating other tab contribution setting:', err); }
+            });
+
+            label.append(checkbox, `Tab: ${tabData.modeName || tabData.tabId} (${tabData.clicks} clicks)`);
+            container.appendChild(label);
+        });
+    }
+
+    
     function loadDataFromStorage() {
         state.currentTabFullUrl = window.location.href; // Key for custom themes
         state.currentTabId = generateTabIdFromUrl();   // Shorter ID for main settings and tab sync
