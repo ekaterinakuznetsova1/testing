@@ -745,6 +745,49 @@
         buildEmergencyShowButton(); // Defines state.domElements.emergencyShowButton
         document.body.appendChild(state.domElements.emergencyShowButton);
 
+    function toggleSettingsPanelVisibility() {
+        setSettingsPanelVisibility(!state.settingsPanelVisible);
+    }
+
+    function setSettingsPanelVisibility(visible) {
+        state.settingsPanelVisible = visible;
+        const panel = state.domElements.settingsPanel;
+        const uiContainer = state.domElements.uiContainer;
+        const toggleButton = state.domElements.toggleSettingsButton;
+
+        if (panel) {
+            panel.style.display = visible ? 'flex' : 'none';
+            // Slide from right. Ensure parent (uiContainer or mainContentArea) has position: relative
+            // And panel has position: absolute
+            panel.style.transform = visible ? 'translateX(0%)' : 'translateX(101%)'; // Adjust percentage if needed
+        }
+
+        if (uiContainer) {
+            // Main container needs to become interactive for pointer events when settings are open,
+            // and return to 'none' (to pass clicks through) when settings are closed,
+            // *unless* the UI itself is globally locked.
+            if (visible) {
+                uiContainer.style.pointerEvents = 'auto';
+            } else {
+                uiContainer.style.pointerEvents = state.uiLocked ? 'auto' : 'none';
+            }
+        }
+
+        if (toggleButton) {
+            toggleButton.textContent = visible ? CONFIG.TOGGLE_SETTINGS_BUTTON_TEXT_OPENED : CONFIG.TOGGLE_SETTINGS_BUTTON_TEXT_CLOSED;
+            // Optional: change style of toggle button when panel is open
+            // toggleButton.style.backgroundColor = visible ? 'rgba(100,120,160,0.6)' : 'rgba(255,255,255,0.05)';
+        }
+
+        // If settings panel is opened and UI is globally locked,
+        // ensure elements within settings panel respect the lock.
+        if (visible && state.uiLocked) {
+            setUILockState(true); // Re-apply lock state to potentially new elements in settings
+        }
+        saveDataToStorage(); // Save the visibility state of the panel
+    }
+
+        
         setInitialUIStates(); // Populates settings, applies visibility etc.
         applyDebugPointerEventsStyle(); // Apply debug borders if enabled
 
