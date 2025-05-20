@@ -18,7 +18,7 @@
         UI_RIGHT_OFFSET: '10px',
         UI_WIDTH_PERCENT_VIEWPORT: 40,    // As in your l.js
         UI_HEIGHT_PERCENT_VIEWPORT: 30,   // As in your l.js
-        UI_MIN_HEIGHT_PX: 250,            // As in your l.js
+        UI_MIN_HEIGHT_PX: 220,            // As in your l.js
         UI_BACKGROUND_COLOR: 'rgba(0, 0, 0, 0.0)',
         UI_TEXT_COLOR: 'rgba(128, 128, 128, 0.7)',
         UI_BORDER_COLOR: 'rgba(0, 0, 0, 0.0)',
@@ -32,26 +32,26 @@
         MAIN_COUNTER_MAX_CHARS_BEFORE_RESIZE: 3, // Resize font if more than 3 digits
         SHOW_DECREMENT_BUTTON: true,     // Option to hide decrement button
         CLICKER_INCREMENT_BUTTON_ID: 'incrementProdBtn_v3',
-        CLICKER_INCREMENT_BUTTON_COLOR: 'rgba(0, 0, 0, 0.2)',
+        CLICKER_INCREMENT_BUTTON_COLOR: 'rgba(0, 0, 0, 0.3)',
         CLICKER_DECREMENT_BUTTON_ID: 'decrementProdBtn_v3',
         CLICKER_DECREMENT_BUTTON_COLOR: 'rgba(10, 0, 0, 0.13)',
         INCREMENT_KEYBOARD_SHORTCUT_CODE: 'ShiftRight', // e.g., 'PageDown', 'ShiftRight', 'ControlLeft'
 
         // --- Timer for Last Action ---
         LAST_ACTION_TIMER_ID: 'lastActionTimer_v3',
-        LAST_ACTION_TIMER_WARN_SECONDS: 10 * 60, // 10 minutes
+        LAST_ACTION_TIMER_WARN_SECONDS: 8 * 60, // 10 minutes
         LAST_ACTION_TIMER_WARN_COLOR: 'rgba(255, 0, 0, 0.7)',
 
         // --- Real-time Clock ---
         CLOCK_DISPLAY_ID: 'prodRealTimeClock_v3',
-        CLOCK_FONT_SIZE_EM: 3.5,
+        CLOCK_FONT_SIZE_EM: 5.5,
 
         // --- Tabs/Modes Overlay & Identification ---
         TAB_OVERLAY_ID_PREFIX: 'prodHelperTabOverlay_',
         TAB_IDENTIFICATION_MODES: [ // User can define multiple modes
-            { name: 'PREB', keyword: 'PREBUILD', color: 'rgba(255, 165, 0, 0.03)', textColor: 'rgba(200, 100, 0, 0.07)'},
-            { name: 'CURRB', keyword: 'CURRENTBUILD', color: 'rgba(0, 165, 255, 0.03)', textColor: 'rgba(0, 100, 200, 0.07)'},
-            { name: 'AFTREF', keyword: 'AFTERREFURBISH', color: 'rgba(100, 255, 100, 0.03)', textColor: 'rgba(50, 180, 50, 0.07)'},
+            { name: 'REFURB', keyword: 'REFURB', color: 'rgba(255, 165, 0, 0.03)', textColor: 'rgba(200, 100, 0, 0.07)'},
+            { name: 'C-RET', keyword: 'CUSTOMER', color: 'rgba(0, 165, 255, 0.03)', textColor: 'rgba(0, 100, 200, 0.07)'},
+            { name: 'WHD', keyword: 'WAREHOUSE', color: 'rgba(100, 255, 100, 0.03)', textColor: 'rgba(50, 180, 50, 0.07)'},
             // Add more modes as needed
         ],
         DEFAULT_TAB_MODE_NAME: 'UNKWN', // Default if no keyword match
@@ -70,8 +70,8 @@
         MULTI_TAB_DATA_TTL_MS: 5 * 60 * 1000, // 5 minutes: data older than this is considered stale for a tab
 
         // --- Shift Settings ---
-        DEFAULT_DAY_SHIFT_START_TIME: '06:26',
-        DEFAULT_NIGHT_SHIFT_START_TIME: '18:26',
+        DEFAULT_DAY_SHIFT_START_TIME: '06:27',
+        DEFAULT_NIGHT_SHIFT_START_TIME: '18:27',
         SETTINGS_SHIFT_TYPE_SELECT_ID: 'shiftTypeSelect_v3',
         SETTINGS_SHIFT_START_TIME_INPUT_ID: 'shiftStartTimeInput_v3',
 
@@ -91,7 +91,7 @@
 
         // --- Statistics Display ---
         STATS_TEXT_SUMMARY_ID: 'prodStatsSummary_v3',
-        STATS_FONT_SIZE_EM: 0.8,
+        STATS_FONT_SIZE_EM: 2,
         STATS_UPDATE_INTERVAL_MS: 3000,
         // Configuration for which tabs contribute to the main "Clicks/Hour"
         // This will be a setting in the UI: array of tab IDs (keywords)
@@ -102,7 +102,7 @@
         TRIGGER_OBSERVE_AREA_SELECTOR: 'body', // Observe whole body
         AUTO_CLICK_ENABLED_CHECKBOX_ID: 'autoClickEnabled_v3',
         TRIGGER_DEBUG_DISPLAY_ID: 'triggerDebugDisplay_v3',
-        MAX_TRIGGER_DEBUG_LINES: 10,
+        MAX_TRIGGER_DEBUG_LINES: 20,
 
         // --- Storage ---
         STORAGE_KEY_PREFIX_MAIN_SETTINGS: 'prodHelper_mainCfg_v3_', // For main UI settings
