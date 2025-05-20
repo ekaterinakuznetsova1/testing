@@ -427,6 +427,26 @@
         updateOtherTabsSettingsDisplay();
     }
 
+
+        function timeStringToMinutes(timeStr) {
+        if (!timeStr || typeof timeStr !== 'string' || !timeStr.includes(':')) {
+            logError('Invalid timeStr provided to timeStringToMinutes:', timeStr);
+            return 0; // Return a default or handle error appropriately
+        }
+        const parts = timeStr.split(':');
+        if (parts.length < 2) {
+            logError('Invalid time format in timeStringToMinutes (expected HH:MM):', timeStr);
+            return 0;
+        }
+        const hours = parseInt(parts[0], 10);
+        const minutes = parseInt(parts[1], 10);
+
+        if (isNaN(hours) || isNaN(minutes)) {
+            logError('Non-numeric values in timeStringToMinutes:', timeStr);
+            return 0;
+        }
+        return hours * 60 + minutes;
+    }
     // ... (formatDateToHHMM, formatMsToDuration, createDOMElement - same as before)
     function formatDateToHHMM(dateObj, includeSeconds = false) {
         if (!dateObj || !(dateObj instanceof Date) || isNaN(dateObj.getTime())) return "N/A";
