@@ -422,6 +422,46 @@
         });
         return element;
     }
+
+        function setDynamicDefaultLunch() {
+        let potentialShiftType = state.shiftType;
+
+        // If shift type is 'auto', we need to guess the current actual shift (day/night)
+        // based on current time and configured shift start times.
+        if (potentialShiftType === 'auto') {
+            if (state.shiftStartTime) { // If shiftStartTime has been determined by auto-logic
+                const shiftStartHour = state.shiftStartTime.getHours();
+                // A simple heuristic: if shift starts between typical day start and before typical night start, assume day.
+                // This uses the _getHour helpers for clarity.
+                potentialShiftType = (shiftStartHour >= _getDayStartHour() && shiftStartHour < _getNightStartHour()) ? 'day' : 'night';
+            } else {
+                // Fallback if shiftStartTime isn't even set yet (e.g. very early in init)
+                // try to guess based on current time directly
+                const now = new Date();
+                const currentHour = now.getHours();
+                potentialShiftType = (currentHour >= _getDayStartHour() && currentHour < _getNightStartHour()) ? 'day' : 'night';
+            }
+        }
+
+        // Find the first suitable lunch option for the determined (or set) shift type or 'any'
+        const defaultLunch = CONFIG.DEFAULT_LUNCH_OPTIONS.find(
+            opt => opt.type === potentialShiftType
+        ) || CONFIG.DEFAULT_LUNCH_OPTIONS.find( // Fallback to 'any' type
+            opt => opt.type === "any"
+        ) || CONFIG.DEFAULT_LUNCH_OPTIONS[0]; // Absolute fallback to the very first option
+
+        state.selectedLunchOption = defaultLunch;
+        logDebug("Dynamic default lunch set to:", state.selectedLunchOption ? state.selectedLunchOption.text : "None");
+    }
+
+    // Helper functions to get start hours for day/night shifts for setDynamicDefaultLunch
+    function _getDayStartHour() {
+        return parseInt(CONFIG.DEFAULT_DAY_SHIFT_START_TIME.split(':')[0], 10);
+    }
+
+    function _getNightStartHour() {
+        return parseInt(CONFIG.DEFAULT_NIGHT_SHIFT_START_TIME.split(':')[0], 10);
+    }
     // ... (Rest of the script: UI Building, Event Handlers, Core Logic, Init)
     // This will be substantial and provided in subsequent parts if needed.
  // == Production Assistant v3.0 (International, Multi-Tab) ==
