@@ -28,7 +28,7 @@
         UI_BORDER_COLOR: 'rgba(200, 200, 200, 0.0)', // Transparent border
         FONT_FAMILY: '"Segoe UI", Roboto, Arial, sans-serif',
         MAIN_ACCENT_COLOR: 'rgba(255, 130, 0, 0.85)', // Brighter orange
-        SETTINGS_PANEL_BACKGROUND: 'rgba(45, 50, 60, 0.97)',
+        SETTINGS_PANEL_BACKGROUND: 'rgba(40, 40, 40, 0.95)',
         SETTINGS_PANEL_TEXT_COLOR: 'rgba(240, 240, 245, 0.95)',
         SETTINGS_PANEL_BORDER_COLOR: 'rgba(255, 130, 0, 0.6)',
         BUTTON_DEFAULT_BG_COLOR: 'rgba(200, 200, 200, 0.15)',
@@ -84,7 +84,7 @@
             CRET: 'C-RET', WHD: 'WHD', REFURB: 'REFURB', UNKNOWN: 'General'
         },
         TAB_IDENTIFICATION_MODES: [
-            { name: 'REFURB', keyword: 'REFURB', color: 'rgba(255, 165, 0, 0.04)', textColor: 'rgba(255, 140, 0, 0.65)' },
+            { name: 'REFURB', keyword: 'CRETURN_REFURB', color: 'rgba(255, 165, 0, 0.04)', textColor: 'rgba(255, 140, 0, 0.65)' },
             { name: 'C-RET', keyword: 'CRETURN', color: 'rgba(0, 165, 255, 0.04)', textColor: 'rgba(0, 140, 255, 0.65)' },
             { name: 'WHD', keyword: 'DEALS', color: 'rgba(100, 255, 100, 0.04)', textColor: 'rgba(80, 220, 80, 0.65)' },
         ],
