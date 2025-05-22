@@ -159,10 +159,7 @@
 
         STATS_FONT_SIZE_EM: 0.95,
         STATS_UPDATE_INTERVAL_MS: 2000,
-        DEFAULT_STATS_CONFIG: {
-            primaryContributingTabs: [CONFIG.TAB_TYPES.CRET, CONFIG.TAB_TYPES.WHD, CONFIG.TAB_TYPES.REFURB],
-            secondaryInfoTabs: []
-        },
+        DEFAULT_STATS_CONFIG: null,
 
         INITIAL_TRIGGER_TEXT: 'poniżej',
         FINAL_TRIGGER_TEXT_CRET: 'Przypisz ponownie',
@@ -288,6 +285,10 @@
                 },
             }
         }
+    };
+        CONFIG.DEFAULT_STATS_CONFIG = {
+        primaryContributingTabs: [CONFIG.TAB_TYPES.CRET, CONFIG.TAB_TYPES.WHD, CONFIG.TAB_TYPES.REFURB],
+        secondaryInfoTabs: []
     };
 
     const state = { /* ... same as v4.0, with theme and statsConfig added ... */
